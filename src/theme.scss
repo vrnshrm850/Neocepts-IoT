@@ -1,0 +1,1506 @@
+@import "~@angular/material/theming";
+@import "~@covalent/core/theming/all-theme";
+@import "~@covalent/markdown/markdown-theme";
+@import "~@covalent/highlight/highlight-theme";
+@import "./variables.scss";
+// Plus imports for other components in your app.
+
+// Custom typography
+$custom-typography: mat-typography-config(
+  $button: mat-typography-level(14px, 14px, 400)
+);
+$custom-toolbar-typography: mat-typography-config(
+  $title: mat-typography-level(20px, 32px, 400)
+);
+
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core($custom-typography);
+
+// Setting the toolbar to the proper spec weight
+@include mat-toolbar-typography($custom-toolbar-typography);
+
+// Include the core styles for Covalent
+@include covalent-core();
+
+// Include pre-bundled material-icons
+$mat-font-url: "../node_modules/@covalent/core/common/styles/font/";
+@include covalent-material-icons();
+// Alternative way to include material-icons
+// @import '../node_modules/@covalent/core/common/material-icons.css';
+
+// Include covalent utility classes
+@include covalent-utilities();
+
+// Include flex layout classes
+@include covalent-layout();
+
+// Include covalent color classes
+@include covalent-colors();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$primary: mat-palette($mat-blue, 700);
+$accent: mat-palette($mat-orange, 800, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$warn: mat-palette($mat-red, 600);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+@include covalent-theme($theme);
+@include covalent-markdown-theme($theme);
+@include covalent-highlight-theme();
+
+// Active icon color in list nav
+mat-nav-list {
+  [mat-list-item].active {
+    mat-icon[matListAvatar] {
+      background-color: mat-color($accent);
+      color: mat-color($accent, default-contrast);
+    }
+    mat-icon[matListIcon] {
+      color: mat-color($accent);
+    }
+  }
+}
+
+// Custom theme examples
+.white-orange {
+  $primary2: mat-palette($mat-grey, 50);
+  $accent2: mat-palette($mat-orange, 800);
+  $warn2: mat-palette($mat-red, 600);
+
+  $white-orange: mat-light-theme($primary2, $accent2, $warn2);
+
+  @include angular-material-theme($white-orange);
+  @include covalent-theme($white-orange);
+}
+.dark-grey-blue {
+  $primary3: mat-palette($mat-blue-grey, 800);
+  $accent3: mat-palette($mat-teal, 500);
+  $warn3: mat-palette($mat-red, 600);
+
+  $dark-grey-blue: mat-dark-theme($primary3, $accent3, $warn3);
+
+  @include angular-material-theme($dark-grey-blue);
+  @include covalent-theme($dark-grey-blue);
+}
+.light-blue-red {
+  $primary4: mat-palette($mat-light-blue, 700);
+  $accent4: mat-palette($mat-red, 700);
+  $warn4: mat-palette($mat-deep-orange, 800);
+
+  $light-blue-red: mat-light-theme($primary4, $accent4, $warn4);
+
+  @include angular-material-theme($light-blue-red);
+  @include covalent-theme($light-blue-red);
+}
+/* ------------------------------------------------------------------------------- */
+$foreground: map-get($theme, foreground);
+$background: map-get($theme, background);
+
+// Apply theme for this app
+
+// NGX Charts
+[ngx-charts-axis-label] text {
+  fill: mat-color($foreground, secondary-text);
+}
+.tick text {
+  fill: mat-color($foreground, disabled);
+}
+.gridline-path {
+  &.gridline-path-horizontal,
+  &.gridline-path-vertical {
+    stroke: rgba(black, 0.06);
+  }
+}
+.legend-title-text {
+  color: mat-color($foreground, secondary-text);
+}
+ngx-charts-line-chart,
+ngx-charts-area-chart,
+ngx-charts-area-chart-stacked {
+  .gridline-path {
+    &.gridline-path-vertical {
+      display: none;
+    }
+  }
+}
+ngx-charts-line-chart {
+  .line-series {
+    .line {
+      stroke-width: 2;
+    }
+  }
+}
+
+/*CUSTOM CSS*/
+
+th.td-data-table-column.mat-clickable.mat-sortable {
+  text-decoration: underline !important;
+}
+
+.tableHeaderWhite th.td-data-table-column {
+  color: $_WHITE;
+}
+
+.mat-table-container {
+  border: 1px solid $container-border !important;
+}
+
+qs-reconciliation-search .red .td-expansion-sublabel {
+  position: $absolute;
+  top: -5px;
+  right: -8px;
+  padding: 3px 9px;
+  border: 2px solid $_WHITE;
+  border-radius: 100px;
+  background: -webkit-linear-gradient(
+    $webkit-linear-gradient 0%,
+    $linear-gradient 100%
+  );
+  background: -o-linear-gradient(
+    $webkit-linear-gradient 0%,
+    $linear-gradient 100%
+  );
+  background: linear-gradient(
+    $webkit-linear-gradient 0%,
+    $linear-gradient 100%
+  );
+  box-shadow: 0 1px 2px $black-box-shadow, 0 1px 4px $black-box-shadow1,
+    0 0 1px $black-box-shadow2 inset, 0 10px 0px $black-box-shadow3 inset;
+  -webkit-background-clip: $padding-box;
+  font: 14px/20px "Helvetica Neue", sans-serif;
+  color: $_WHITE !important;
+  text-decoration: $none;
+  //text-shadow: 0 -1px 0 rgba(0,0,0,.6);
+  margin-right: 56px !important;
+  margin-top: 13px !important;
+}
+
+qs-reconciliation-search .blue .td-expansion-sublabel {
+  position: $absolute;
+  top: -5px;
+  right: -8px;
+  padding: 3px 9px;
+  border: 2px solid $_WHITE;
+  border-radius: 100px;
+  background: -webkit-linear-gradient(
+    rgba(53, 129, 204, 0.73),
+    $color-blue 100%
+  );
+  background: -o-linear-gradient(rgba(53, 129, 204, 0.73), $color-blue 100%);
+  background: linear-gradient(rgba(53, 129, 204, 0.73), $color-blue 100%);
+  box-shadow: 0 1px 2px $black-box-shadow, 0 1px 4px $black-box-shadow1,
+    0 0 1px $black-box-shadow2 inset, 0 10px 0px $black-box-shadow3 inset;
+  -webkit-background-clip: $padding-box;
+  font: 14px/20px "Helvetica Neue", sans-serif;
+  color: white !important;
+  text-decoration: $none;
+  //text-shadow: 0 -1px 0 rgba(0,0,0,.6);
+  margin-right: 56px !important;
+  margin-top: 13px !important;
+}
+
+qs-reconciliation-search .mat-figure {
+  height: 63px !important;
+}
+
+qs-reconciliation-search .td-expansion-panel-header {
+  background-color: $reconcilation-panel-header-bgColor;
+}
+
+qs-reconciliation-search
+  .td-expansion-panel
+  .td-expansion-panel-header:focus:not(.mat-disabled),
+qs-reconciliation-search
+  .td-expansion-panel
+  .td-expansion-panel-header:hover:not(.mat-disabled) {
+  background: $reconcilation-panel-header-focuscolor;
+}
+
+.reconciliation_popupwidth {
+  width: 1200px;
+}
+
+td-data-table.productTable table {
+  border: $none !important;
+  border-spacing: 1px !important;
+}
+
+td-data-table.productTable thead tr {
+  border: $none !important;
+  height: 24px;
+}
+
+td-data-table.productTable tbody tr {
+  border-bottom: 1px dotted $dotted-border !important;
+  height: 33px;
+}
+
+td-data-table.productTable .mat-table-container {
+  border: none !important;
+}
+
+td-data-table.productTable2 table {
+  border: none !important;
+  border-spacing: 1px !important;
+}
+
+td-data-table.productTable2 thead tr {
+  border-bottom: 1px dotted $dotted-border !important;
+  height: 33px;
+}
+
+qs-dialog-reconciliation .mat-body-1,
+qs-dialog-reconciliation .mat-caption {
+  font-size: 10px !important;
+}
+
+td-data-table.productTable2 tbody tr {
+  border-bottom: 1px dotted $dotted-border !important;
+  height: 33px;
+}
+
+td-data-table.productTable2 .mat-table-container {
+  border: none !important;
+}
+
+.invoiceItemListTable thead tr {
+  border-bottom-color: $color-lightbrown;
+  background-color: $light-blue;
+  height: 26px;
+}
+.invoiceItemListTable .mat-caption {
+  color: $_WHITE !important;
+}
+
+.addInvoiceProductRow .mat-input-ripple.mat-focused {
+  margin-left: -109px;
+}
+
+/****New Invoice UI CSS from here ****/
+card-company-details .mat-basic-chip {
+  border-radius: 0px !important;
+  margin: 0 !important;
+  background-color: $transparent !important;
+  width: 100%;
+}
+
+card-company-details .td-chip span {
+  font-size: 16px;
+}
+
+card-company-details .mat-card-title,
+card-company-details .mat-card-content,
+card-company-details .mat-card-subtitle {
+  margin-bottom: 0px !important;
+}
+
+card-company-details .mat-card .mat-card-actions:last-child {
+  margin-bottom: 0px;
+  padding-bottom: 8px;
+  text-align: $right;
+}
+
+card-company-details .badge-black {
+  font-size: 0.8rem;
+  position: $relative;
+  top: 0;
+  -na-text-transform: $uppercase;
+  padding: 5px;
+  color: $_BLACK;
+  text-shadow: $none !important;
+  white-space: $nowrap;
+  font-weight: 700;
+}
+
+card-company-details .badge-black {
+  color: $_WHITE;
+  background: linear-gradient($bg-color, $bg-color1);
+}
+
+card-company-details .mat-basic-chip .td-chip,
+card-company-details td-chips {
+  padding: 0px !important;
+}
+card-company-details td-chips {
+  min-height: 30px !important;
+}
+
+card-company-details .mat-card-subtitle {
+  font-size: 13px;
+}
+
+card-company-details .autoCompleteControl .mat-input-underline {
+  border-color: $mat-card-title-color;
+}
+
+card-company-details .autoCompleteControl .mat-card mat-card-title {
+  padding-bottom: 16px;
+  background-color: $mat-card-title-color;
+}
+
+card-company-details span.EditButton {
+  float: $right;
+}
+
+card-company-details .EditButton .mat-raised-button {
+  min-width: 0px !important;
+  padding: 0 8px !important;
+}
+
+card-company-details mat-card-title.customFont {
+  background-color: $color-blueShade !important;
+  color: $_WHITE;
+  font-size: 17px;
+  padding: 10px !important;
+}
+
+card-company-details .mat-card-subtitle:not(:first-child) {
+  margin-top: 0px !important;
+}
+
+card-company-details .mat-card-title .CompanyGSTIN,
+card-company-address-details .mat-card-title .CompanyGSTIN {
+  font-size: $meta-font-size;
+}
+
+card-company-address-details .mat-basic-chip {
+  border-radius: 0px !important;
+  margin: 0 !important;
+  background-color: $transparent !important;
+  width: 100%;
+}
+
+card-company-address-details .td-chip span {
+  font-size: 16px;
+}
+
+card-company-address-details .mat-card-title,
+card-company-address-details .mat-card-content,
+card-company-address-details .mat-card-subtitle {
+  margin-bottom: 0px !important;
+}
+
+card-company-address-details .mat-card .mat-card-actions:last-child {
+  margin-bottom: 0px;
+  padding-bottom: 8px;
+  text-align: $right;
+}
+
+card-company-address-details .badge-black {
+  font-size: 0.8rem;
+  position: $relative;
+  top: 0;
+  -na-text-transform: $uppercase;
+  padding: 5px;
+  color: $_BLACK;
+  text-shadow: $none !important;
+  white-space: $nowrap;
+  font-weight: 700;
+}
+
+card-company-address-details .badge-black {
+  color: $_WHITE;
+  background: linear-gradient($bg-color, $bg-color1);
+}
+
+card-company-address-details .mat-basic-chip .td-chip,
+card-company-address-details td-chips {
+  padding: 0px !important;
+}
+card-company-address-details td-chips {
+  min-height: 30px !important;
+}
+
+card-company-address-details .mat-card-subtitle {
+  font-size: 9px;
+}
+
+card-company-address-details .autoCompleteControl .mat-input-underline {
+  border-color: $mat-card-title-color;
+}
+
+card-company-address-details .autoCompleteControl .mat-card mat-card-title {
+  padding-bottom: 16px;
+  background-color: $mat-card-title-color;
+}
+
+card-company-address-details span.EditButton {
+  float: $right;
+}
+
+card-company-address-details .EditButton .mat-raised-button {
+  min-width: 0px !important;
+  padding: 0 8px !important;
+}
+
+card-company-address-details mat-card-title.customFont {
+  background-color: $custom-font !important;
+  color: $_WHITE;
+  font-size: 14px;
+  padding: 10px !important;
+}
+
+card-company-address-details .mat-card-subtitle:not(:first-child) {
+  margin-top: 0px !important;
+}
+
+company-address-details mat-card-title.customFont {
+  background-color: $custom-font !important;
+  color: $_WHITE;
+  font-size: 17px;
+  padding: 8px !important;
+}
+
+company-address-details .mat-card-subtitle:not(:first-child) {
+  margin-top: 0px !important;
+}
+
+card-invoice-detail-add {
+  width: 90%;
+}
+
+td-navigation-drawer .mat-icon.mat-icon-logo {
+  height: auto;
+  width: 60px;
+}
+
+td-navigation-drawer .mat-toolbar {
+  background-color: $white;
+  padding: 8px !important;
+}
+
+td-navigation-drawer .mat-toolbar-layout span {
+  width: 70px;
+}
+
+td-navigation-drawer .mat-body-2 {
+  position: $absolute;
+  margin-left: 70px;
+  font-size: 18px !important;
+}
+
+td-navigation-drawer .mat-body-1 {
+  position: 4absolute;
+  margin-left: 70px;
+  margin-top: 30px;
+  font-size: $meta-font-size !important;
+}
+
+td-navigation-drawer .liDiv {
+  padding-left: 9px !important;
+  padding-bottom: 6px !important;
+  padding-top: 6px !important;
+  font-size: $default-font-size;
+  border-left: 5px solid $color-accent;
+}
+
+td-navigation-drawer .liDiv.shade {
+  background-color: $none !important;
+  margin-left: 20px;
+  border: $none;
+}
+
+td-navigation-drawer .has-children.listStyle {
+  border-bottom: 1px solid $white;
+}
+
+td-navigation-drawer .has-children.listStyle:hover {
+  background-color: $td-navigation-drawer-hover;
+}
+
+td-navigation-drawer .shade {
+  background: $none !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $scrollbar;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: $scrolbar;
+}
+qs-initial-setup .td-step {
+  width: 400px !important;
+}
+qs-initial-setup .td-step-header .td-step-header-content {
+  background: $header-content-color !important;
+  height: 100px !important;
+}
+qs-initial-setup .td-step {
+  border: 2px solid $container-border !important;
+  margin-bottom: 35px !important;
+}
+
+qs-initial-setup :not([dir="rtl"]) .td-vertical-line {
+  left: 200px !important;
+}
+qs-initial-setup .td-vertical-line {
+  margin-top: 10px !important;
+  right: auto !important;
+  top: 100% !important;
+  left: 50% !important;
+  border: $solid $transparent !important;
+  content: " " !important;
+  height: 0 !important;
+  width: 0 !important;
+  position: $absolute !important;
+  pointer-events: $none !important;
+  border-color: $vertical-line-border !important;
+  border-top-color: $color-accent !important;
+  border-width: 20px !important;
+  margin-left: -20px !important;
+}
+qs-initial-setup td-steps .td-step-header .mat-complete {
+  color: $mat-complete !important;
+}
+
+.td-step-header .mat-complete {
+  color: $mat-complete !important;
+}
+
+qs-initial-setup body .mat-body-2.td-step-label {
+  font-size: 18px !important;
+}
+.td-search-box td-search-input {
+  width: 100% !important;
+}
+
+.invoiceView .mat-select-trigger {
+  min-width: 50px;
+}
+
+.invoiceView .mat-select-placeholder,
+.invoiceView .mat-input-placeholder-wrapper,
+.invoiceView .mat-select-trigger {
+  font-size: $default-font-size;
+}
+
+.headerColumns .mat-list-item-content {
+  /*height: auto !important;
+    min-height: 32px !important;*/
+  border-bottom: 1px ridge $color-blue;
+  border-top: 1px ridge $color-blue-light;
+}
+
+.bodyColumns .mat-list-item-content {
+  height: auto !important;
+  min-height: 48px !important;
+  font-size: 13px !important;
+}
+/*.customerSearch .mat-input-underline .mat-input-ripple {
+    background-color:$_WHITE !important;
+}
+.customerSearch .mat-focused .mat-input-placeholder{
+   color: $_WHITE !important;
+}
+.customerSearch  .mat-input-placeholder{
+    color: $_WHITE !important;
+}
+.customerSearch .mat-input-underline {
+    background-color: $_WHITE !important;
+}
+.customerSearch .mat-focused{
+    color: $_WHITE !important;
+ }*/
+
+.customerSearchInput .mat-form-field-infix {
+  display: $block;
+  position: $relative;
+  flex: auto;
+  min-width: 0;
+  width: 240px;
+}
+.customerSearchInputFull .mat-form-field-infix {
+  display: $block;
+  position: $relative;
+  flex: auto;
+  min-width: 0;
+  width: 300px;
+}
+.customerSearch .mat-form-field {
+  display: $block !important;
+  position: $relative;
+  text-align: $left;
+}
+.productSearch .mat-form-field {
+  display: $block !important;
+  position: $relative;
+  text-align: $left;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.customerSearch .lowerCase :first-letter {
+  text-transform: uppercase;
+}
+.customerSearch .lowerCase {
+  text-overflow: $ellipsis !important;
+  text-transform: $capitalize !important;
+  font-size: 14px;
+}
+.textTransFormCapitalize {
+  text-transform: $capitalize !important;
+}
+
+td-layout-manage-list .mat-toolbar {
+  font-weight: 400;
+  background-color: $color-darkBlue;
+  font-variant-caps: $all-small-caps;
+  color: $td-layout-managelist-color;
+}
+
+td-layout-manage-list .mat-toolbar .mat-icon {
+  color: $td-layout-managelist-color;
+}
+
+td-layout-manage-list .mat-toolbar-row,
+td-layout-manage-list .mat-toolbar {
+  height: 40px;
+  min-height: 40px !important;
+  font-size: 16px;
+}
+
+card-invoice-detail-add .mat-select-underline {
+  margin-bottom: 2px;
+}
+
+card-invoice-detail-add .mat-select-value-text {
+  font-size: $default-font-size;
+}
+
+card-invoice-detail-add .mat-select-placeholder.mat-floating-placeholder {
+  top: -16px !important;
+}
+
+.td-expansion-panel-group .td-expansion-panel {
+  border-bottom: 3px solid $_WHITE;
+}
+
+qs-login
+  .mat-tab-header-pagination-controls-enabled
+  .mat-tab-header-pagination {
+  display: $none;
+}
+
+qs-login .mat-divider {
+  border-top-color: $color-blue;
+  border-top-style: $solid !important;
+  border-top-width: 1px !important;
+}
+
+qs-login .mat-tab-label {
+  font-variant-caps: $all-petite-caps;
+  font-size: 18px !important;
+}
+
+qs-login .mat-ink-bar {
+  background-color: $color-accent;
+  height: 3px;
+}
+
+qs-login .loginInputPlaceholder .mat-input-placeholder {
+  font-variant-caps: $all-petite-caps;
+  letter-spacing: 1px;
+  font-size: 15px;
+  padding-bottom: 3px !important;
+  margin-bottom: 3px !important;
+}
+
+qs-login .paddingPlaceholder .mat-form-field-flex {
+  display: $inline-flex;
+  align-items: $flex-end !important;
+  width: 100%;
+}
+
+qs-login .mat-sidenav-content {
+  background-color: $_WHITE !important;
+}
+
+qs-login .mat-content {
+  padding: 0px !important;
+  background-color: $_WHITE;
+}
+
+qs-login .material-icons {
+  font-size: 22px !important;
+}
+.cursorPointer {
+  cursor: $pointer !important;
+}
+/*.checkBoxInvoice .mat-checkbox-frame {
+    border-color: $_WHITE;
+}*/
+.checkBoxInfo .mat-checkbox-frame {
+  border-color: #ef6c00;
+}
+.menuInfo .mat-raised-button {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  line-height: 26px;
+  border-radius: 2px;
+  padding: 0px;
+}
+.checkBoxInfo .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #ef6c00;
+}
+.checkBoxInfo .mat-checkbox-background,
+.mat-checkbox-frame {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  border-radius: 0px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+.checkBoxInfo .mat-checkbox-inner-container {
+  display: inline-block;
+  height: 15px;
+  line-height: 0;
+  margin: auto;
+  margin-right: 8px;
+  order: 0;
+  position: relative;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 15px;
+  flex-shrink: 0;
+}
+.mat-option {
+  line-height: 27px !important;
+}
+.small-font {
+  font-size: 11px !important;
+  line-height: 10px !important;
+}
+.canceled {
+  color: $cancelled;
+  cursor: $pointer;
+}
+
+td-data-table {
+  border: 1px solid $container-border;
+  // height: 200px !important;
+}
+.mat-simple-snackbar-action {
+  color: $_WHITE;
+}
+.td-layout-manage-list-sidenav {
+  overflow: $hidden !important;
+  position: unset !important;
+}
+
+// .td-data-table-scrollable {
+//     overflow-x: hidden !important;
+// }
+.align-center {
+  margin: auto !important;
+}
+.scroll {
+  max-width: 1910px;
+  overflow: auto;
+}
+qs-table-mapping .td-data-table-cell mat-form-field .mat-form-field-underline {
+  display: $block !important;
+}
+.mat-chip:not(.mat-basic-chip) {
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: $inline-flex;
+  padding: 7px 12px;
+  border-radius: 24px;
+  align-items: $center;
+  cursor: default;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  -webkit-appearance: none;
+  color: $_WHITE;
+  background-color: $color-accent;
+  box-shadow: 0 3px 1px -2px $box-shadow1, 0 2px 2px 0 $box-shadow2,
+    0 1px 5px 0 $box-shadow3;
+  transition: background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: $border-box;
+  position: $relative;
+  cursor: $pointer;
+  -moz-user-select: $none;
+  -ms-user-select: $none;
+  user-select: $none;
+  outline: 0;
+  border: $none;
+  display: $inline-block;
+  white-space: $nowrap;
+  text-decoration: $none;
+  font-size: $default-font-size;
+  font-family: $_DEFAULT_FONT_STACK;
+  font-weight: 500;
+  text-align: $center;
+  margin: 0;
+  min-width: 88px;
+  line-height: 36px;
+  padding: 0 16px;
+  border-radius: 2px;
+  vertical-align: $middle;
+}
+
+input[type="file"] {
+  -webkit-appearance: $none;
+  text-align: $left;
+  -webkit-rtl-ordering: $left;
+}
+
+.td-data-table-column-row {
+  height: 30px !important;
+}
+
+.td-data-table-row {
+  height: 36px !important;
+}
+
+.mat-card-content {
+  padding: 8px !important;
+}
+
+button#btnSaveReportAs {
+  float: $right;
+  margin-right: 60px;
+  margin-top: 10px;
+}
+
+.numberRightAlign .td-data-table-cell-content-wrapper {
+  -webkit-box-pack: $end !important;
+  -ms-flex-pack: $end !important;
+  justify-content: $end !important;
+  flex-direction: $row-reverse !important;
+  flex-flow: $wrap;
+}
+
+.td-data-table-cell-content-wrapper span.taxPercentageVal {
+  width: 100%;
+  display: $inline-block;
+  text-align: $right;
+}
+
+sbm-homepage .mat-icon.mat-icon-logo {
+  height: 60px;
+}
+
+sbm-homepage .mat-toolbar {
+  background-color: $_WHITE;
+  min-height: 64px;
+}
+
+sbm-homepage .push-top-16 {
+  margin-bottom: -16px !important;
+}
+
+.toast-top-full-width {
+  top: 15% !important;
+  right: 1% !important;
+  width: 40% !important;
+}
+.toast-bottom-full-width {
+  bottom: 82% !important;
+  right: 1% !important;
+  width: 40% !important;
+}
+
+.toast-info {
+  background-color: $color-accent !important;
+}
+
+.td-expansion-label {
+  font-variant-caps: $all-small-caps;
+}
+
+.subHeadAccordian .td-expansion-panel-header {
+  background-color: $color-blue !important;
+}
+
+.table {
+  font-size: $meta-font-size;
+  width: 100%;
+  text-align: $left;
+  border-collapse: $collapse;
+  border: 1px solid $border-table;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.table th {
+  font-weight: $normal;
+  font-size: $meta-font-size;
+  color: $table_head;
+  padding: 10px 10px 10px;
+  font-variant-caps: $all-small-caps;
+}
+
+.table td {
+  color: $light-blackShade;
+  border: 1px solid $dotted-border;
+  padding: 10px;
+  font-size: $default-font-size;
+}
+
+td.text-right {
+  padding-right: 60px !important;
+}
+
+.iconRight div {
+  float: $right;
+}
+
+.drawer-name {
+  position: $absolute;
+  top: 6px;
+  margin-left: 84px;
+  font-weight: 400;
+  color: $_BLACK;
+  font-variant-caps: $all-small-caps;
+  font-size: 18px !important;
+  text-overflow: $ellipsis;
+  overflow: $hidden;
+  width: 200px;
+  cursor: default;
+}
+
+.drawer-emailId {
+  position: $absolute;
+  float: $left;
+  top: 15px;
+  margin-left: 84px;
+  font-weight: 400;
+  color: $lightshade;
+  font-variant-caps: $titling-caps;
+  font-size: 12px !important;
+  letter-spacing: 0.5px;
+  padding-top: 12px;
+  text-overflow: $ellipsis;
+  overflow: $hidden;
+  width: 200px;
+  cursor: default;
+}
+
+td-search-box {
+  max-height: 3em;
+  min-height: 3em;
+  display: $flex;
+}
+
+.hidden {
+  display: $none !important;
+}
+
+.td-data-table-scrollable {
+  width: calc(100% - -10px) !important;
+}
+
+sbm-help .mat-icon.mat-icon-logo {
+  height: 60px;
+}
+
+td-data-table.productTable thead th {
+  left: 5px;
+  font-size: $default-font-size;
+  letter-spacing: 1px;
+  font-variant-caps: $all-petite-caps;
+  height: 24px;
+  background-color: $light-green;
+  color: $_WHITE !important;
+  font-weight: 400;
+}
+
+td-data-table.productTable1 thead tr {
+  left: 5px;
+  font-size: $default-font-size;
+  letter-spacing: 1px;
+  font-variant-caps: $all-petite-caps;
+  height: 24px;
+  background-color: $light-green;
+  color: $_WHITE !important;
+  font-weight: 400;
+}
+
+td-data-table.productTable2 thead tr {
+  left: 5px;
+  font-size: $default-font-size;
+  letter-spacing: 1px;
+  font-variant-caps: $all-petite-caps;
+  height: 24px;
+  background-color: $light-orange;
+  color: $_WHITE !important;
+  font-weight: 400;
+}
+
+td-data-table.productTable2 .td-data-table-column {
+  color: $_WHITE !important;
+}
+qs-initial-setup {
+  width: 100%;
+}
+
+.confirm-dialog .mat-dialog-container {
+  padding: 0px !important;
+}
+.customerSearchOptions {
+  line-height: 18px !important;
+  border: $solid;
+  border-width: 1px;
+  border-color: $_GREY;
+  font-size: 12px !important;
+}
+.customerSearchOptions:hover {
+  background-color: $light-shade;
+}
+.customerSearchOptions div {
+  overflow: $hidden !important;
+  text-overflow: $ellipsis !important;
+}
+.customerSearch [name="companySearchReults"] {
+  min-height: 75px !important;
+  padding: 0px !important;
+}
+.customerSearch [name="noCompanyFound"] {
+  padding: 0px !important;
+  font-size: 12px !important;
+}
+
+.td-paging-bar {
+  -webkit-box-pack: $start !important;
+  -ms-flex-pack: $start !important;
+  justify-content: $start !important;
+}
+.summaryHeader .mat-card-header-text {
+  width: 90%;
+}
+
+.headerLable {
+  font-size: 14px;
+  font-variant-caps: $all-small-caps;
+  color: $light-blackShade;
+}
+
+.ValueLable {
+  font-size: $meta-font-size;
+}
+
+.underline {
+  border-bottom: 1px ridge $underline-color;
+  padding-top: 12px;
+  padding-right: 14px;
+  padding-bottom: 5px;
+  font-size: $meta-font-size;
+}
+
+.underline:last-child {
+  border-bottom: 2px ridge $color-blue;
+}
+
+.amountBold {
+  font-weight: 600;
+}
+
+span.CompanyTitle.headerLable {
+  color: $_WHITE;
+}
+
+.textAlignLeft {
+  text-align: $left;
+  padding-left: 1.2em !important;
+}
+
+.mat-active .customerSearchOptions {
+  background-color: #d3d3d3 !important;
+}
+
+.mat-tooltip.tooltip {
+  color: $_BLACK;
+  background-color: $_WHITE;
+  box-shadow: 0 3px 1px -2px $box-shadow1, 0 2px 2px 0 $box-shadow2,
+    0 1px 5px 0 $box-shadow3;
+  margin-top: -16px;
+}
+.tdDataTableHeaderNone
+  td-data-table
+  .td-data-table
+  .td-data-table-head
+  .td-data-table-column-row {
+  border-bottom: $none !important;
+}
+.title {
+  font-size: 16px;
+  font-weight: 500px;
+  margin-left: -8px;
+}
+
+.importHistoryMenu {
+  min-width: 300px !important;
+}
+.userPreferences {
+  .mat-form-field-infix {
+    width: 170px !important;
+    min-width: 0px;
+  }
+}
+
+.reportName {
+  font-size: 18px;
+}
+
+.reportDescription {
+  font-size: 14px;
+}
+
+.slideshow-container .arrow-container .arrow {
+  border-top: 5px solid $color-accent !important;
+  border-left: 5px solid $color-accent !important;
+}
+
+.mat-drawer-content {
+  overflow: hidden !important;
+}
+//some commonly used css
+.padding-5 {
+  padding: 5px;
+}
+.bold {
+  font-weight: $bold;
+}
+.right {
+  float: $right;
+}
+.border-right {
+  border-right: 1px solid $container-border;
+}
+.border-left {
+  border-left: 1px solid $container-border;
+}
+.border {
+  border: 1px solid $container-border;
+}
+.text-size-14 {
+  font-size: 14px;
+}
+.text-size-12 {
+  font-size: $meta-font-size;
+}
+
+.padding10 {
+  padding: 10px;
+}
+.width100Pcent {
+  width: 100%;
+}
+.bg-white {
+  background-color: $_WHITE;
+}
+.paddingLeft10px {
+  padding-left: 10px;
+}
+.paddingRight10px {
+  padding-right: 10px;
+}
+.fontSize20px {
+  font-size: 20px;
+}
+.faqs .mat-icon.mat-icon-logo {
+  height: 50px !important;
+  width: 90px !important;
+}
+.textAlignLeft {
+  text-align: left;
+}
+.link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.padding15px {
+  padding: 15px;
+}
+.bg-black {
+  background-color: $color-black;
+}
+.paddingLeft1percent {
+  padding-left: 1%;
+}
+
+.min-width22vw {
+  min-width: 22vw;
+}
+
+.text-align-justify {
+  text-align: justify;
+}
+.text-align-center {
+  text-align: center;
+}
+.reconDropDown .mat-form-field-infix {
+  width: 325px !important;
+}
+.mrgn-tp-btm-5px {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.reconTdDataTable .td-paging-bar > * {
+  margin: 0px !important;
+  .mat-icon-button {
+    width: 30px;
+  }
+}
+.claimItcPagination .td-paging-bar > * {
+  margin: 0px !important;
+  .mat-icon-button {
+    width: 30px;
+  }
+}
+
+.td-paging-bar > * {
+  margin: 0px 8px !important;
+}
+
+@media (max-width: 600px) {
+  sbm-homepage .mat-icon.mat-icon-logo {
+    height: 45px !important;
+    width: 45px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .font-size_12 .mat-raised-button {
+    font-size: 12px;
+  }
+}
+
+.mat-tooltip.Gstr3btooltip {
+  color: $_BLACK;
+  background-color: $_WHITE;
+  box-shadow: 0 3px 1px -2px $box-shadow1, 0 2px 2px 0 $box-shadow2,
+    0 1px 5px 0 $box-shadow3;
+  margin-top: -10px;
+  width: 100px;
+  overflow: auto;
+}
+
+.view-card.card-4 {
+  width: 97% !important;
+}
+.add-btn {
+  height: 36px;
+  margin-right: 30px !important;
+  margin-top: 6px !important;
+}
+.claim-itc-comp .mat-form-field-infix {
+  width: 60px !important;
+}
+
+.claim-itc-comp {
+  .quantity .td-data-table-heading {
+    padding: 0px !important;
+  }
+  .invNumber .td-data-table-heading {
+    padding-left: 12px !important;
+    padding-right: 0px !important;
+  }
+
+  .invDate .td-data-table-heading {
+    padding-left: 0px 20px !important;
+  }
+
+  .customClaimInput {
+    width: 30px;
+    text-align: right !important;
+    .mat-input-flex.mat-form-field-flex {
+      border-bottom: solid;
+      border-width: 0.5px;
+    }
+  }
+}
+
+.gstr3bSec31 {
+  .mat-card {
+    min-width: 600px;
+  }
+}
+.gstr3bSec4 {
+  .mat-card {
+    min-width: 600px;
+  }
+}
+
+.search_box .td-search-box {
+  width: min-content;
+  justify-content: initial !important;
+}
+
+.search_box .td-search-input {
+  overflow-x: initial !important;
+  justify-content: initial !important;
+}
+
+.search_box .push-left {
+  margin-left: 0 !important;
+}
+.search_box .mat-icon-button {
+  width: 36px !important;
+}
+.invoice_filter {
+  margin-left: 26px;
+}
+@media (max-width: 599px) {
+  .searchBoxWidth .mat-form-field-infix {
+    width: 155px !important;
+  }
+  .searchBoxWidth .td-search-input-clear.mat-icon-button {
+    width: 30px !important;
+  }
+  .add-btn.mat-raised-button {
+    min-width: 65px !important;
+  }
+}
+@media (max-width: 599px) {
+  .mat-datepicker-content .mat-calendar {
+    width: 241px !important;
+    height: 289px !important;
+  }
+}
+
+.gstr9 {
+  .sectionRow td {
+    background-color: $color-primary;
+    color: white !important;
+  }
+}
+
+.gstr9A {
+  .sectionRow td {
+    background-color: $color-primary;
+    color: white !important;
+  }
+}
+
+.gstr9C {
+  .sectionRow td {
+    background-color: $color-primary;
+    color: white !important;
+  }
+}
+
+.textAlignRight {
+  text-align: right;
+}
+
+.mat-raised-button {
+  min-width: 88px !important;
+}
+.infoLabel {
+  display: block;
+}
+.mat-drawer-inner-container {
+  overflow: unset !important;
+}
+.mat-menu-panel {
+  overflow: unset !important;
+}
+
+body .text-micro {
+  line-height: 14px;
+}
+
+.invoiceheader .mat-card-content {
+  font-size: 12px !important;
+}
+
+.mat-chip {
+  font-size: 12px;
+}
+
+#importProductCard,
+#importServiceCard,
+#importCard {
+  .mat-card-content {
+    font-size: $meta-font-size !important;
+    letter-spacing: 0.5px !important;
+  }
+}
+.downloadLink {
+  color: $color-darkBlue !important;
+  cursor: pointer !important;
+}
+
+.invSettingDropdownOption {
+  .mat-option-text {
+    letter-spacing: 0.5px;
+    padding: 3px !important;
+    border: solid;
+    border-color: gray;
+    border-width: 1px;
+    font-size: 12px !important;
+  }
+}
+.invSettingDropdown {
+  min-width: 230px !important;
+  .mat-select-value {
+    font-size: 11px;
+    font-variant-caps: $titling-caps;
+    letter-spacing: 0.5px;
+  }
+}
+
+.invoiceSettingsComp {
+  .mat-list-item {
+    height: auto !important;
+  }
+}
+
+.marginLeft5px {
+  margin-left: 5px;
+}
+.dashboardSummaryFilter .material-icons {
+  font-size: 30px;
+}
+
+.dialog-select-invoice-setting .mat-dialog-container {
+  min-width: 60vw;
+}
+
+.textAlignCenter {
+  text-align: center;
+}

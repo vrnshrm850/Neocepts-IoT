@@ -1,0 +1,253 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./variables.scss";
+// Custom style for loading elements without height
+.will-load {
+  min-height: 80px;
+}
+// Href line height wasn't right for mat-icon-button
+a[mat-icon-button] {
+  line-height: 36px;
+}
+
+// Capitalize
+.text-capital {
+  text-transform: $capitalize;
+}
+
+// Lighter font weight in sub-toolbars
+td-layout-manage-list .mat-toolbar {
+  font-weight: 400;
+}
+.position-highlight .inner {
+  position: $absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+
+  background-color: $highlight-color;
+  border: 1px $solid $transparent;
+  -webkit-transition: background 3s;
+  transition: background 3s;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px $box-shadow-inner, 0 1px 2px $box-Shadow-inner;
+}
+
+.gridster-item-inner {
+  position: $absolute;
+  background: $_WHITE;
+  border: 1px $solid $transparent;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  -webkit-transition: background 3s;
+  transition: background 3s;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px $box-shadow-inner 0 1px 2px $box-Shadow-inner;
+}
+.is-dragging .gridster-item-inner {
+  box-shadow: 0 2px 6px $box-shadow-inner, 0 2px 4px $box-Shadow-item;
+  top: -3px;
+  bottom: 13px;
+}
+snack-bar-container.success-class-snack {
+  background: $success-snack !important;
+}
+
+.success-class-snack .mat-simple-snackbar {
+  color: $_WHITE !important;
+}
+snack-bar-container.error-class-snack {
+  background: $error-snack !important;
+}
+
+.error-class-snack .mat-simple-snackbar {
+  color: $_WHITE !important;
+}
+snack-bar-container.warning-class-snack {
+  background: $warning-snack !important;
+}
+
+.warning-class-snack .mat-simple-snackbar {
+  color: $_WHITE !important;
+}
+snack-bar-container.info-class-snack {
+  background: $info-class-snack !important;
+}
+
+.info-class-snack .mat-simple-snackbar {
+  color: $_WHITE !important;
+}
+
+.td-expansion-panel-header {
+  background: $color-darkBlue !important;
+  font-size: $meta-font-size !important;
+  text-transform: $uppercase;
+  letter-spacing: 2px;
+  color: $_WHITE;
+  border-bottom: 1px $solid $_WHITE;
+}
+
+.td-expansion-panel-header-content {
+  height: 36px !important;
+}
+
+.td-expansion-label {
+  font-size: $default-font-size;
+}
+
+.td-notification-count {
+  line-height: 24px !important;
+  width: 24px !important;
+  height: 24px !important;
+  font-size: $meta-font-size !important;
+}
+
+.td-expansion-panel
+  .td-expansion-panel-header
+  .td-expansion-panel-header-content
+  mat-icon.td-expand-icon {
+  color: $mat-card-title-color !important;
+}
+
+.td-notification-count.td-notification-center-x {
+  left: auto !important;
+}
+
+.mat-autocomplete-visible {
+  visibility: $visible;
+  width: 400px !important;
+}
+.mat-autocomplete-panel.mat-autocomplete-panel-above {
+  top: -24px;
+  width: 400px !important;
+}
+.mat-autocomplete-panel.mat-autocomplete-panel-above {
+  top: -24px;
+  width: 400px !important;
+}
+.avoid-clicks {
+  pointer-events: $none !important;
+}
+.mat-basic-chip {
+  background: $color-accent !important;
+  color: $basic-chip-color;
+}
+.addInvoiceProductRow .mat-input-ripple.mat-focused {
+  margin-left: -109px;
+}
+
+.mb10 {
+  margin-bottom: 10px !important;
+}
+.mb16 {
+  margin-bottom: 16px !important;
+}
+.mr10 {
+  margin-right: 10px;
+}
+
+.pb10 {
+  padding-bottom: 10px !important;
+}
+.TextToRight {
+  text-align: $right;
+}
+
+.TextToCenter {
+  text-align: $center;
+}
+
+sbm-gstr1-details-table mat-expansion-panel-header {
+  height: 32px !important;
+  font-size: $default-font-size !important;
+  background-color: $blue-light-shade !important;
+  border-bottom: 1px $solid $_WHITE !important;
+}
+
+sbm-gstr1-details-table mat-panel-title.mat-expansion-panel-header-title {
+  color: $_WHITE;
+}
+
+sbm-gstr1-details-table .mat-expansion-indicator::after {
+  color: $_WHITE;
+}
+.expensionpannelBlue mat-expansion-panel-header {
+  height: 38px !important;
+  font-size: $default-font-size !important;
+  background-color: $blue-light-shade !important;
+  border-bottom: 1px $solid $_WHITE !important;
+}
+
+.expensionpannelBlue mat-panel-title.mat-expansion-panel-header-title {
+  color: $_WHITE;
+}
+
+.expensionpannelBlue .mat-expansion-indicator::after {
+  color: $_WHITE;
+}
+sbm-gstr1-details-table h3.mat-subheading-2 {
+  font-size: $meta-font-size;
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: 1px;
+  text-align: $right;
+}
+
+sbm-gstr1-details-table .td-data-table-column-row,
+sbm-gstr1-details-table .td-data-table-row {
+  height: 30px !important;
+}
+
+sbm-gstr1-details-table th.td-data-table-column {
+  background-color: rgba(235, 108, 0, 0.8) !important;
+}
+
+sbm-gstr1-details-table span.td-data-table-heading {
+  font-variant-caps: $all-small-caps !important;
+  color: $_WHITE !important;
+}
+
+sbm-gstr1-details-table span.td-data-table-heading mat-icon {
+  font-variant: $none !important;
+  color: $_WHITE !important;
+}
+
+sbm-gstr1-details-table .td-data-table-row {
+  height: 28px;
+}
+
+sbm-gstr1-details-table .td-data-table-cell {
+  font-size: $meta-font-size;
+}
+
+sbm-gstr1-details-table .mat-expansion-panel-body {
+  padding: 0px 10px 0px;
+}
+@media (max-width: 600px) {
+  .td-data-table-heading {
+    padding: 0 14px !important;
+  }
+  .td-data-table-cell-content-wrapper {
+    padding: 0 14px !important;
+  }
+}
+.pull-right {
+  float: right;
+}
+.underline {
+  text-decoration: $underline;
+}
+.pointer {
+  cursor: $pointer;
+}
+.pb8 {
+  padding-bottom: 8px;
+}
+.grey {
+  color: $_GREY;
+}
+.floatleft {
+  float: left;
+}
