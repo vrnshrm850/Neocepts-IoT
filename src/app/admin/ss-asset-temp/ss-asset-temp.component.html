@@ -1,0 +1,86 @@
+<div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-potrait']">
+  <div flex-gt-sm="50">
+    <mat-card layout-align="center">
+      <mat-card-title>Small Size Asset Template</mat-card-title>
+
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <form class="example-form">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Light Sensor</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Light Sensor"
+              [(ngModel)]="assetTemplate.lightSensor"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>PIR Sensor</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="PIR Sensor"
+              [(ngModel)]="assetTemplate.pirSensor"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Temperature Sensor</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Temperature Sensor"
+              [(ngModel)]="assetTemplate.temperatureSensor"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Door Sensor</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Door Sensor"
+              [(ngModel)]="assetTemplate.doorSensor"
+            />
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Level Sensor</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Level Sensor"
+              [(ngModel)]="assetTemplate.levelSensor"
+            />
+          </mat-form-field>
+        </form>
+
+        <br />
+        <h4>
+          Total Number of Devices =
+          {{
+            assetTemplate.lightSensor +
+              assetTemplate.pirSensor +
+              assetTemplate.temperatureSensor +
+              assetTemplate.doorSensor +
+              assetTemplate.levelSensor
+          }}
+        </h4>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <a mat-button color="accent" class="text-upper" [routerLink]="['/']">
+          <span>Save</span>
+        </a>
+        <a
+          mat-button
+          style="position: absolute;
+              right: 0;"
+          color="accent"
+          class="text-upper"
+          [routerLink]="['/']"
+        >
+          <span>Cancel</span>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

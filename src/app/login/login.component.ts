@@ -63,6 +63,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this._router.navigate(["dashboard"]);
+    this._router.navigate(["layout"]);
   }
 }

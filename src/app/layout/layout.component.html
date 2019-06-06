@@ -1,119 +1,111 @@
 <td-layout>
-  <td-navigation-drawer flex sidenavTitle="Covalent" logo="teradata-dark" name="Firstname Lastname" email="firstname.lastname@company.com">
+  <td-navigation-drawer
+    flex
+    img="/assets/login-images/output-onlinepngtools.png"
+    sidenavTitle="Business setup"
+    logo="teradata-dark"
+    name="Firstname Lastname"
+    email="firstname.lastname@company.com"
+  >
     <mat-nav-list>
-      <a *ngFor="let item of routes" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      <a *ngFor="let item of routes" mat-list-item
+        ><mat-icon>{{ item.icon }}</mat-icon
+        >{{ item.title }}</a
+      >
     </mat-nav-list>
     <div td-navigation-drawer-menu>
       <mat-nav-list>
-        <a *ngFor="let item of usermenu" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+        <a *ngFor="let item of usermenu" mat-list-item
+          ><mat-icon>{{ item.icon }}</mat-icon
+          >{{ item.title }}</a
+        >
       </mat-nav-list>
     </div>
   </td-navigation-drawer>
-  <td-layout-nav>
-    <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <button mat-icon-button td-menu-button tdLayoutToggle>
+
+  <td-layout-nav-list
+    #navList
+    [opened]="media.registerQuery('gt-sm') | async"
+    [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'over'"
+    [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '350px' : '100%'"
+  >
+    <div td-sidenav-toolbar-content layout="row" layout-align="start center">
+      <button mat-icon-button tdLayoutToggle>
         <mat-icon>menu</mat-icon>
       </button>
-      <mat-icon [routerLink]="['/']" class="mat-icon-logo cursor-pointer" svgIcon="assets:teradata"></mat-icon>
-      <span [routerLink]="['/']" class="cursor-pointer">Covalent</span>
-      <span flex></span>
-      <a mat-icon-button matTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><mat-icon>chrome_reader_mode</mat-icon></a>
-      <a mat-icon-button matTooltip="Github" href="https://github.com/teradata/covalent" target="_blank"><mat-icon svgIcon="assets:github"></mat-icon></a>
+      <img src="../../assets/ico/logo-03.png" height="70px" width="70px" />
+      <span [routerLink]="['/']" class="cursor-pointer"
+        >Remote Infrastructure</span
+      >
     </div>
-    <td-layout-manage-list #manageList
-            [opened]="media.registerQuery('gt-sm') | async"
-            [mode]="(media.registerQuery('gt-sm') | async) ? 'side' :  'over'"
-            [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '257px' : '100%'">
-      <mat-toolbar td-sidenav-content>
-        <span>Optional Title</span>
-      </mat-toolbar>
-      <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
-        <ng-template let-item let-last="last" ngFor [ngForOf]="navmenu">
-          <a mat-list-item>
-            <mat-icon matListIcon>{{item.icon}}</mat-icon> {{item.title}}
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <span>Page Title</span>
+      <span flex></span>
+    </div>
+    <div td-sidenav-content>
+      <mat-toolbar td-sidenav-content
+        ><span>Neocepts</span>
+        <button
+          style="position: absolute;
+          right: 0;"
+          mat-icon-button
+          tdLayoutNavListToggle
+          [hideWhenOpened]="false"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button></mat-toolbar
+      >
+      <mat-nav-list td-sidenav-content>
+        <!-- <ng-template let-item let-last="last" ngFor [ngForOf]="navmenu">
+          <a mat-list-item routerLink="{{ item.route }}">
+            <mat-icon matListIcon>{{ item.icon }}</mat-icon>
+            {{ item.title }}
           </a>
-        </ng-template>
+        </ng-template> -->
+
+        <a mat-list-item routerLink="customer-details">
+          <mat-icon matListIcon>looks_one</mat-icon>
+          Customer Details
+        </a>
+        <a mat-list-item routerLink="">
+          <mat-icon matListIcon>looks_two</mat-icon>
+          Asset Template
+        </a>
+
+        <a mat-list-item routerLink="ss-asset-temp">
+          <mat-icon matListIcon>looks_3</mat-icon>
+          Small Size Asset Template
+        </a>
+        <a mat-list-item routerLink="ms-asset-temp">
+          <mat-icon matListIcon>looks_4</mat-icon>
+          Medium Size Asset Template
+        </a>
+
+        <a mat-list-item routerLink="ls-asset-temp">
+          <mat-icon matListIcon>looks_5</mat-icon>
+          Large Size Asset Template
+        </a>
       </mat-nav-list>
-      <mat-toolbar>
-        <div layout="row" layout-align="start center" flex>
-          <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
-            <mat-icon>arrow_back</mat-icon>
-          </button>
-          <span>Content Title</span>
-          <span flex></span>
-          <button mat-icon-button><mat-icon>settings</mat-icon></button>
-        </div>
-      </mat-toolbar>
-      <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
-        <div flex-gt-sm="60">
-          <mat-card>
-            <mat-card-title>Products Sales</mat-card-title>
-            <mat-card-subtitle>usage stats for our products</mat-card-subtitle>
-            <mat-divider></mat-divider>
-            <mat-card-content>
-              card content
-            </mat-card-content>
-            <mat-divider></mat-divider>
-            <mat-card-actions>
-              <a mat-button color="accent" class="text-upper" [routerLink]="['/']">
-                <span>View More</span>
-              </a>
-            </mat-card-actions>
-          </mat-card>
-          <mat-card>
-            <mat-card-title>Customer Activity</mat-card-title>
-            <mat-card-subtitle>Recent activity from select members</mat-card-subtitle>
-            <mat-divider></mat-divider>
-            <mat-card-content>
-              card content
-            </mat-card-content>
-            <mat-divider></mat-divider>
-            <mat-card-actions>
-              <a mat-button color="accent" class="text-upper" [routerLink]="['/']">
-                <span>View More</span>
-              </a>
-            </mat-card-actions>
-          </mat-card>
-        </div>
-        <div flex-gt-sm="40">
-          <mat-card>
-            <mat-card-title>Alerts</mat-card-title>
-            <mat-card-subtitle>Items requiring attention</mat-card-subtitle>
-            <mat-divider></mat-divider>
-            <mat-card-content>
-              card content
-            </mat-card-content>
-            <mat-divider></mat-divider>
-            <mat-card-actions>
-              <a mat-button color="accent" class="text-upper" [routerLink]="['/']">
-                <span>View More</span>
-              </a>
-            </mat-card-actions>
-          </mat-card>
-          <mat-card>
-            <mat-card-title>Favorites</mat-card-title>
-            <mat-card-subtitle>Your favorite products</mat-card-subtitle>
-            <mat-divider></mat-divider>
-            <mat-card-content>
-              card content
-            </mat-card-content>
-            <mat-divider></mat-divider>
-            <mat-card-actions>
-              <a mat-button color="accent" class="text-upper" [routerLink]="['/']">
-                <span>View More</span>
-              </a>
-            </mat-card-actions>
-          </mat-card>
-        </div>
+    </div>
+    <mat-toolbar>
+      <div layout="row" layout-align="start center" flex>
+        <span
+          ><button mat-icon-button tdLayoutNavListOpen [hideWhenOpened]="true">
+            <mat-icon>arrow_forward</mat-icon></button
+          >Content Title</span
+        >
+        <span flex></span>
+        <button mat-icon-button><mat-icon>settings</mat-icon></button>
       </div>
-      <td-layout-footer-inner>
-        Optional inner footer
-      </td-layout-footer-inner>
-    </td-layout-manage-list>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
     <td-layout-footer>
       <div layout="row" layout-align="start center">
-        <span class="mat-caption">Copyright &copy; 2017 Teradata. All rights reserved</span>
+        <span class="mat-caption"
+          >Copyright &copy; 2017 Teradata. All rights reserved</span
+        >
       </div>
     </td-layout-footer>
-  </td-layout-nav>
+  </td-layout-nav-list>
 </td-layout>
