@@ -5,6 +5,7 @@ import { environment } from "../../environments/environment";
 import { SBM_GLOBAL_VARIABLE } from "../../api.config";
 import { Router } from "@angular/router";
 // import {TdMediaService} from "@covalent/core";
+import { AuthService } from './../auth/auth.service';
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
   obj: Object;
   signUpForm: any;
   hideFormTOReset: any = false;
+  username: any;
 
   // copyViewObj: any = this._commonFunction.copy(this.viewObj);
   isGstnAlreadyExist: any = false;
@@ -58,11 +60,11 @@ export class LoginComponent implements OnInit {
     isHavingGstn: "true"
   };
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private _authService: AuthService) {}
 
   ngOnInit() {}
 
   login() {
-    this._router.navigate(["layout"]);
+    localStorage.setItem('isLoggedIn',"true");
   }
 }

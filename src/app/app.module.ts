@@ -56,6 +56,9 @@ import { SsAssetTempComponent } from "./admin/ss-asset-temp/ss-asset-temp.compon
 import { MsAssetTempComponent } from "./admin/ms-asset-temp/ms-asset-temp.component";
 import { LsAssetTempComponent } from "./admin/ls-asset-temp/ls-asset-temp.component";
 import { AssetTempComponent } from "./admin/asset-temp/asset-temp.component";
+import { HomeLayoutComponent } from './home-layout/home-layout.component';
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import {AuthGuard} from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -68,7 +71,9 @@ import { AssetTempComponent } from "./admin/asset-temp/asset-temp.component";
     SsAssetTempComponent,
     MsAssetTempComponent,
     LsAssetTempComponent,
-    AssetTempComponent
+    AssetTempComponent,
+    HomeLayoutComponent,
+    LoginLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +124,7 @@ import { AssetTempComponent } from "./admin/asset-temp/asset-temp.component";
     // RecaptchaModule,
   ],
   exports: [MatExpansionModule],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

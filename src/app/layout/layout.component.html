@@ -1,9 +1,8 @@
-<td-layout>
+<td-layout >
   <td-navigation-drawer
     flex
     img="/assets/login-images/output-onlinepngtools.png"
     sidenavTitle="Business setup"
-    logo="teradata-dark"
     name="Firstname Lastname"
     email="firstname.lastname@company.com"
   >
@@ -41,6 +40,26 @@
     <div td-toolbar-content layout="row" layout-align="start center" flex>
       <span>Page Title</span>
       <span flex></span>
+      <a mat-icon-button mat-icon-button [mat-menu-trigger-for]="userMenu" id="userIcon" ><mat-icon svgIcon="assets:user"></mat-icon></a>
+
+    <mat-menu x-position="before" #userMenu="matMenu">
+        <mat-list class="sbmmat-list">
+            <mat-list-item class="sbmMenuHighlight">
+                <mat-icon matListAvatar class="sbmUserAvatar">person</mat-icon>
+                <h3 mat-line class="username">{{name}}</h3>
+                <p mat-line class="useremail">{{emailId}}</p>
+            </mat-list-item>
+            <mat-divider class="sbmProfileMenuDivider"></mat-divider>
+            <mat-list-item class="smbProfileMenuLogout">
+                <a flex mat-raised-button color="accent" (click)="logout();">
+                    <mat-icon id="signOutButton" class="white">exit_to_app</mat-icon>
+                    Sign out
+                </a>
+            </mat-list-item>
+        
+        </mat-list>
+    </mat-menu>
+
     </div>
     <div td-sidenav-content>
       <mat-toolbar td-sidenav-content

@@ -1,3 +1,5 @@
+
+@import "~variables.scss";
 .example-form {
   min-width: 150px;
   max-width: 500px;
@@ -6,4 +8,349 @@
 
 .example-full-width {
   width: 100%;
+}
+
+
+.iconsize {
+  height: 50px !important;
+  width: 50px !important;
+}
+.headerColor {
+  background: $color-blue;
+  color: $_WHITE;
+}
+.link {
+  cursor: $pointer;
+  color: $color-accent;
+  text-decoration: $underline;
+}
+.data {
+  color: $lightshade;
+  font-size: 13px;
+}
+.white {
+  color: $_WHITE;
+}
+td-expansion-panel {
+  box-shadow: $none;
+}
+.title {
+  margin-left: 40px;
+  font-weight: $bold;
+  font-size: $default-font-size;
+}
+.margin-top10 {
+  margin-top: 10px;
+}
+.mat-menu-panel {
+  max-width: 350px !important;
+}
+.mat-menu-panel.ng-tns-c17-4.mat-menu-before.mat-menu-below.ng-trigger.ng-trigger-transformMenu {
+  max-width: 350px !important;
+}
+.sbmmat-list {
+  min-width: 280px !important;
+  margin-top: -16px;
+  margin-bottom: -8px;
+}
+.sbmmat-listItemColor {
+  color: $_BLACK;
+}
+.sbmRolesH3 {
+  margin-bottom: 10px;
+}
+.sbmRolesItemspan {
+  color: $spanshade;
+  font-size: $meta-font-size;
+}
+.sbmRolesGroupFont {
+  font-size: 13px;
+}
+.sbmRolesGroupmargin {
+  margin-bottom: 10px;
+  padding-top: 5px !important;
+}
+.sbmLinks {
+  color: $_BLACK !important;
+  content: "";
+  left: 0;
+  bottom: 1px;
+  border-width: 0 0 1px;
+  border-style: $solid;
+}
+
+.companyList {
+  width: 250px;
+  height: auto !important;
+  border-bottom: 0.5px solid $light-grey;
+  padding: 5px 10px 5px 10px;
+  cursor: $pointer;
+  font-size: $default-font-size;
+  font-weight: 500;
+  word-wrap: $break-word;
+}
+.firstCompany {
+  border-top: 0.5px solid $light-grey;
+}
+
+.companyList:hover {
+  background: $light-grey;
+}
+
+.mat-menu-content .companyOnly {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.font10 {
+  font-size: 10px;
+}
+.rightAlign {
+  text-align: $right;
+}
+
+mat-list-item mat-icon[matListAvatar],
+.mat-list-item-content mat-icon[matListAvatar] {
+  background-color: $blue;
+}
+
+.mat-list-item-content mat-icon {
+  color: $color-gray-light;
+}
+
+a.sbmProfileMenuItem {
+  text-decoration: $none;
+  text-decoration-line: $none;
+  text-decoration-style: $initial;
+  text-decoration-color: $initial;
+  color: $color-gray-light;
+  font-size: $default-font-size;
+  font-variant-caps: $all-petite-caps;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+mat-list-item.listitem.mat-list-item {
+  padding: 2px;
+}
+
+.userrole {
+  font-size: 12px !important;
+  font-variant-caps: $all-petite-caps;
+  letter-spacing: 0.3px;
+  color: $color-blue;
+}
+
+.username {
+  font-variant-caps: $all-petite-caps;
+  letter-spacing: 0.3px;
+}
+
+p.useremail.mat-line {
+  font-size: $meta-font-size !important;
+  letter-spacing: 0.5px;
+}
+
+.CompanyDetails {
+  display: $inline-block;
+}
+
+.singleCompany {
+  margin-right: 31px;
+}
+
+.CompanyDetails span {
+  display: $block;
+}
+
+.companyGSTINDropDown {
+  position: $absolute;
+  top: 20px;
+  right: 44px;
+  color: $border-color;
+  letter-spacing: 3px;
+}
+
+span.selectedCompanyName.mat-line {
+  font-size: 16px;
+  font-variant-caps: $all-petite-caps;
+  margin-top: -12px;
+}
+
+h3.CompanyNameDropDownList.mat-line {
+  font-size: 14px !important;
+  font-variant-caps: $all-petite-caps;
+}
+
+p.companyGSTINDropDownList.mat-line {
+  font-size: 10px !important;
+  letter-spacing: 1px;
+  color: $color-accent;
+}
+
+.selectedCompany {
+  background-color: $border-color;
+  pointer-events: $none;
+}
+
+mat-list-item.sbmMenuHighlight.companyListDropdown {
+  height: 50px !important;
+  cursor: $pointer;
+}
+
+.companyDropdown {
+  height: 50px;
+}
+.companyLabel {
+  pointer-events: $none;
+}
+
+a.companyDropdown.mat-button i {
+  margin-top: 15px;
+}
+a.companyDropdown.mat-button {
+  min-width: 200px;
+  text-align: $right;
+}
+
+.versionDetail {
+  font-weight: 400;
+  color: $lightshade;
+  font-variant-caps: $titling-caps;
+  font-size: 12px !important;
+  letter-spacing: 0.5px;
+  height: 20px;
+  padding-left: 6em;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #ef6c00; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: visible;
+  background-color: lightgray;
+  color: black;
+  border-radius: 6px;
+  font-size: 14px;
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+  width: 300px;
+  height: 64px;
+  padding-left: 10px;
+}
+.tooltip .tooltiptextHide {
+  visibility: hidden;
+  background-color: #ef6c00;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 12px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  opacity: 0.9;
+  padding: 5px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext {
+     top: -20px;
+  left: 105%; 
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 30%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent lightgray transparent transparent;
+}
+.zindex0{
+  z-index: 0;
+}
+.ml120{
+  margin-left:120px
+}
+.buttonInfo{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin-right: 7px;
+  margin-top: -1px;
+  background: #ef6c00;
+  color: white;
+  line-height: 26px;
+  border-radius: 4px;
+}
+.dot {
+  height: 40px;
+  width: 40px;
+  background-color: lightgray;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+}
+.dot:hover{
+  cursor: pointer;
+}
+.iconColor{
+  color:#ef6c00;
+  margin-top:7px
+}
+
+@media(max-width: 599px){
+  .dot{
+    height: 27px;
+    width: 27px;
+  }
+  .iconsize{
+    height: 30px !important;
+    width: 30px !important;
+  }
+  span.selectedCompanyName.mat-line{
+    font-size: 13px;
+    margin-top: -2px;
+  }
+  a.companyDropdown.mat-button{
+    min-width: 151px;
+    padding: 0px 0px !important;
+  }
+  .companyGSTINDropDown{
+    top: 22px;
+    right: 24px;
+    font-size: 9px;
+  }
+  .font-size_12{
+    font-size: 12px;
+}
+.iconColor{
+    margin-top: 2px;
+    font-size: 18px;
+}
+
 }

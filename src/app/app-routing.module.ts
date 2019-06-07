@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: "ss-asset-temp", component: SsAssetTempComponent },
   { path: "ms-asset-temp", component: MsAssetTempComponent },
   { path: "ls-asset-temp", component: LsAssetTempComponent },
-  { path: "asset-temp", component: AssetTempComponent }
+  { path: "asset-temp", component: AssetTempComponent },
+  { path: "**", component: AssetTempComponent }
 ];
 
 @NgModule({

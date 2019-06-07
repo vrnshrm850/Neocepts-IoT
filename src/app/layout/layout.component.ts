@@ -5,6 +5,9 @@ import {
   ChangeDetectorRef
 } from "@angular/core";
 import { TdMediaService } from "@covalent/core/media";
+import { Observable } from 'rxjs';
+import { AuthService } from './../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,6 +16,7 @@ import { TdMediaService } from "@covalent/core/media";
   styleUrls: ["./layout.component.scss"]
 })
 export class LayoutComponent implements OnInit {
+  isLoggedIn$: Observable<boolean>; 
   routes: Object[] = [
     {
       icon: "home",
@@ -90,7 +94,16 @@ export class LayoutComponent implements OnInit {
     // }
   ];
 
-  constructor(public media: TdMediaService) {}
+  constructor(public media: TdMediaService,private authService: AuthService, private _router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._router.navigate(['/customer-details'])
+    this.isLoggedIn$ = this.authService.isLoggedIn;
+  }
+
+
+  logout(){
+    localStorage.removeItem("isLoggedIn");
+    this._router.navigate(['/'])
+  }
 }
